@@ -9,13 +9,27 @@
 /* Begin PBXBuildFile section */
 		CD62CA75262C8C910043BD77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CA74262C8C910043BD77 /* AppDelegate.swift */; };
 		CD62CA77262C8C910043BD77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CA76262C8C910043BD77 /* SceneDelegate.swift */; };
-		CD62CA79262C8C910043BD77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CA78262C8C910043BD77 /* ViewController.swift */; };
+		CD62CA79262C8C910043BD77 /* MenuGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CA78262C8C910043BD77 /* MenuGroupViewController.swift */; };
 		CD62CA7C262C8C910043BD77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD62CA7A262C8C910043BD77 /* Main.storyboard */; };
 		CD62CA7F262C8C910043BD77 /* TBC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD62CA7D262C8C910043BD77 /* TBC.xcdatamodeld */; };
 		CD62CA81262C8C920043BD77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD62CA80262C8C920043BD77 /* Assets.xcassets */; };
 		CD62CA84262C8C920043BD77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD62CA82262C8C920043BD77 /* LaunchScreen.storyboard */; };
 		CD62CA8F262C8C920043BD77 /* TBCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CA8E262C8C920043BD77 /* TBCTests.swift */; };
 		CD62CA9A262C8C920043BD77 /* TBCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CA99262C8C920043BD77 /* TBCUITests.swift */; };
+		CD62CAAE262C90780043BD77 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAAD262C90780043BD77 /* Constants.swift */; };
+		CD62CAB8262C96A30043BD77 /* MenuGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAB7262C96A30043BD77 /* MenuGroup.swift */; };
+		CD62CAC0262C970B0043BD77 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CABF262C970B0043BD77 /* MenuItem.swift */; };
+		CD62CAC5262C997D0043BD77 /* MenuItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAC4262C997D0043BD77 /* MenuItemViewController.swift */; };
+		CD62CACB262C99D10043BD77 /* MenuGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CACA262C99D10043BD77 /* MenuGroupTableViewCell.swift */; };
+		CD62CAD3262C99E30043BD77 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAD2262C99E30043BD77 /* MenuItemTableViewCell.swift */; };
+		CD62CAD8262CA2A00043BD77 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAD7262CA2A00043BD77 /* ImageController.swift */; };
+		CD62CAE1262CA9A70043BD77 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAE0262CA9A70043BD77 /* ModelController.swift */; };
+		CD62CAE9262CCA6A0043BD77 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAE8262CCA6A0043BD77 /* EntityType.swift */; };
+		CD62CAEF262CCCF60043BD77 /* DatabasePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAEE262CCCF60043BD77 /* DatabasePersistence.swift */; };
+		CD62CB15262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB13262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift */; };
+		CD62CB16262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB14262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift */; };
+		CD62CB1F262CD7510043BD77 /* MenuItemData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB1D262CD7510043BD77 /* MenuItemData+CoreDataClass.swift */; };
+		CD62CB20262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB1E262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +53,7 @@
 		CD62CA71262C8C910043BD77 /* TBC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD62CA74262C8C910043BD77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD62CA76262C8C910043BD77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CD62CA78262C8C910043BD77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD62CA78262C8C910043BD77 /* MenuGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupViewController.swift; sourceTree = "<group>"; };
 		CD62CA7B262C8C910043BD77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD62CA7E262C8C910043BD77 /* TBC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TBC.xcdatamodel; sourceTree = "<group>"; };
 		CD62CA80262C8C920043BD77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +65,20 @@
 		CD62CA95262C8C920043BD77 /* TBCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TBCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD62CA99262C8C920043BD77 /* TBCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBCUITests.swift; sourceTree = "<group>"; };
 		CD62CA9B262C8C920043BD77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD62CAAD262C90780043BD77 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CD62CAB7262C96A30043BD77 /* MenuGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroup.swift; sourceTree = "<group>"; };
+		CD62CABF262C970B0043BD77 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		CD62CAC4262C997D0043BD77 /* MenuItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewController.swift; sourceTree = "<group>"; };
+		CD62CACA262C99D10043BD77 /* MenuGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupTableViewCell.swift; sourceTree = "<group>"; };
+		CD62CAD2262C99E30043BD77 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		CD62CAD7262CA2A00043BD77 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		CD62CAE0262CA9A70043BD77 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		CD62CAE8262CCA6A0043BD77 /* EntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
+		CD62CAEE262CCCF60043BD77 /* DatabasePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePersistence.swift; sourceTree = "<group>"; };
+		CD62CB13262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuGroupData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CD62CB14262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuGroupData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CD62CB1D262CD7510043BD77 /* MenuItemData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CD62CB1E262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +129,18 @@
 		CD62CA73262C8C910043BD77 /* TBC */ = {
 			isa = PBXGroup;
 			children = (
+				CD62CAED262CCCD30043BD77 /* Database */,
+				CD62CADC262CA2A70043BD77 /* Controllers */,
+				CD62CAC9262C99AD0043BD77 /* TableViewCells */,
+				CD62CAB6262C968F0043BD77 /* Data Models */,
 				CD62CA74262C8C910043BD77 /* AppDelegate.swift */,
 				CD62CA76262C8C910043BD77 /* SceneDelegate.swift */,
-				CD62CA78262C8C910043BD77 /* ViewController.swift */,
+				CD62CAB2262C90A70043BD77 /* View Controllers */,
 				CD62CA7A262C8C910043BD77 /* Main.storyboard */,
 				CD62CA80262C8C920043BD77 /* Assets.xcassets */,
 				CD62CA82262C8C920043BD77 /* LaunchScreen.storyboard */,
 				CD62CA85262C8C920043BD77 /* Info.plist */,
-				CD62CA7D262C8C910043BD77 /* TBC.xcdatamodeld */,
+				CD62CAAD262C90780043BD77 /* Constants.swift */,
 			);
 			path = TBC;
 			sourceTree = "<group>";
@@ -129,6 +161,56 @@
 				CD62CA9B262C8C920043BD77 /* Info.plist */,
 			);
 			path = TBCUITests;
+			sourceTree = "<group>";
+		};
+		CD62CAB2262C90A70043BD77 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD62CA78262C8C910043BD77 /* MenuGroupViewController.swift */,
+				CD62CAC4262C997D0043BD77 /* MenuItemViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		CD62CAB6262C968F0043BD77 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD62CAB7262C96A30043BD77 /* MenuGroup.swift */,
+				CD62CABF262C970B0043BD77 /* MenuItem.swift */,
+				CD62CAE8262CCA6A0043BD77 /* EntityType.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		CD62CAC9262C99AD0043BD77 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CD62CACA262C99D10043BD77 /* MenuGroupTableViewCell.swift */,
+				CD62CAD2262C99E30043BD77 /* MenuItemTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		CD62CADC262CA2A70043BD77 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD62CAD7262CA2A00043BD77 /* ImageController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CD62CAED262CCCD30043BD77 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				CD62CB1D262CD7510043BD77 /* MenuItemData+CoreDataClass.swift */,
+				CD62CB1E262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift */,
+				CD62CB13262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift */,
+				CD62CB14262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift */,
+				CD62CAEE262CCCF60043BD77 /* DatabasePersistence.swift */,
+				CD62CAE0262CA9A70043BD77 /* ModelController.swift */,
+				CD62CA7D262C8C910043BD77 /* TBC.xcdatamodeld */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +343,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD62CA79262C8C910043BD77 /* ViewController.swift in Sources */,
+				CD62CAC0262C970B0043BD77 /* MenuItem.swift in Sources */,
+				CD62CAE9262CCA6A0043BD77 /* EntityType.swift in Sources */,
+				CD62CB15262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift in Sources */,
+				CD62CB1F262CD7510043BD77 /* MenuItemData+CoreDataClass.swift in Sources */,
+				CD62CACB262C99D10043BD77 /* MenuGroupTableViewCell.swift in Sources */,
+				CD62CAAE262C90780043BD77 /* Constants.swift in Sources */,
+				CD62CAEF262CCCF60043BD77 /* DatabasePersistence.swift in Sources */,
+				CD62CAC5262C997D0043BD77 /* MenuItemViewController.swift in Sources */,
+				CD62CA79262C8C910043BD77 /* MenuGroupViewController.swift in Sources */,
+				CD62CB16262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift in Sources */,
 				CD62CA7F262C8C910043BD77 /* TBC.xcdatamodeld in Sources */,
+				CD62CB20262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift in Sources */,
+				CD62CAD8262CA2A00043BD77 /* ImageController.swift in Sources */,
 				CD62CA75262C8C910043BD77 /* AppDelegate.swift in Sources */,
+				CD62CAB8262C96A30043BD77 /* MenuGroup.swift in Sources */,
+				CD62CAE1262CA9A70043BD77 /* ModelController.swift in Sources */,
 				CD62CA77262C8C910043BD77 /* SceneDelegate.swift in Sources */,
+				CD62CAD3262C99E30043BD77 /* MenuItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
