@@ -96,7 +96,7 @@
         <!--Add Menu Group View Controller-->
         <scene sceneID="lpL-Ex-mfY">
             <objects>
-                <viewController id="nII-Wz-8hk" customClass="AddMenuGroupViewController" customModule="TBC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMenuGroupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nII-Wz-8hk" customClass="AddMenuGroupViewController" customModule="TBC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KJW-gV-hOg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="928" y="837"/>
         </scene>
-        <!--Add Menu Group View Controller-->
+        <!--Add Menu Item View Controller-->
         <scene sceneID="cRH-Rt-ghW">
             <objects>
-                <viewController id="Zj4-Xx-Lif" customClass="AddMenuGroupViewController" customModule="TBC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMenuItemViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zj4-Xx-Lif" customClass="AddMenuItemViewController" customModule="TBC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Vf-AG-21O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +190,9 @@
                                 <state key="normal" title="Add Image">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="addImageButtonTapped:" destination="Zj4-Xx-Lif" eventType="touchUpInside" id="8BT-OM-Gt4"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6EX-RY-Kt5">
                                 <rect key="frame" x="48" y="240" width="224" height="34"/>
@@ -207,6 +210,9 @@
                                 <state key="normal" title="Add Item">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="addItemButtonTapped:" destination="Zj4-Xx-Lif" eventType="touchUpInside" id="R7R-36-376"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5o0-f4-brj"/>
@@ -230,6 +236,13 @@
                             <constraint firstItem="hdO-xf-DhY" firstAttribute="top" secondItem="6EX-RY-Kt5" secondAttribute="bottom" constant="32" id="pD0-b8-DHH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addImageButton" destination="EKn-KW-XoV" id="JoM-Ku-C3C"/>
+                        <outlet property="addItemButton" destination="rP2-Qn-lIt" id="HEa-hb-5Se"/>
+                        <outlet property="itemNameTextField" destination="6EX-RY-Kt5" id="CV4-Zb-hxY"/>
+                        <outlet property="itemPriceTextField" destination="hdO-xf-DhY" id="McI-bN-WjA"/>
+                        <outlet property="menuItemImageView" destination="1AB-Eg-nWi" id="bNA-1g-7F7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TkD-KD-Pin" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,7 +251,7 @@
         <!--Items-->
         <scene sceneID="3Dm-s4-dEI">
             <objects>
-                <viewController id="nGh-xX-4bS" customClass="MenuItemViewController" customModule="TBC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuItemViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nGh-xX-4bS" customClass="MenuItemViewController" customModule="TBC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F99-Fw-cyJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

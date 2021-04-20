@@ -10,6 +10,9 @@ import Foundation
 struct K {
     //MARK: - Identifiers
     static let menuGroupViewController = "MenuGroupViewController"
+    static let menuItemViewController = "MenuItemViewController"
+    static let addMenuGroupViewController = "AddMenuGroupViewController"
+    static let addMenuItemViewController = "AddMenuItemViewController"
     static let menuGroupCell = "MenuGroupCell"
     static let MenuItemCell = "MenuItemCell"
     

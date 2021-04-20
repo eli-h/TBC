@@ -50,7 +50,6 @@ class AddMenuGroupViewController: UIViewController {
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            print("Button capture")
 
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
@@ -79,7 +78,6 @@ class AddMenuGroupViewController: UIViewController {
                 delegate?.didUpdateMenuGroup(menuGroupToEdit!)
                 databaseManager.deleteMenuGroup(withId: menuGroupToEdit!.id)
                 databaseManager.saveNewMenuGroup(menuGroupToEdit!)
-                //databaseManager.updateMenuGroup(withId: menuGroupToEdit!.id, with: menuImage!, and: menuNameTextField.text!)
             }
         }
         
@@ -95,11 +93,9 @@ class AddMenuGroupViewController: UIViewController {
 
 extension AddMenuGroupViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let charSet = textField.tag == 0 ? CharacterSet.alphanumerics : CharacterSet.decimalDigits
-        
+
         if string.count > 0 {
-            let unwantedStr = string.trimmingCharacters(in: charSet)
+            let unwantedStr = string.trimmingCharacters(in: CharacterSet.alphanumerics)
             return unwantedStr.count == 0
         }
 
