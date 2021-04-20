@@ -9,6 +9,7 @@ import UIKit
 
 protocol AddMenuGroupViewControllerDelegate {
     func didAddNewMenuGroup(_ newMenuGroup: MenuGroup)
+    func didUpdateMenuGroup(_ updatedMenuGroup: MenuGroup)
 }
 
 class AddMenuGroupViewController: UIViewController {
@@ -16,16 +17,17 @@ class AddMenuGroupViewController: UIViewController {
     @IBOutlet weak var menuGroupImageView: UIImageView!
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var menuNameTextField: UITextField!
-    @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var addMenuButton: UIButton!
     
     var delegate: AddMenuGroupViewControllerDelegate?
-    var menuGroupImage: UIImage?
+    var menuGroupToEdit: MenuGroup?
+    var editMenuGroup = false
+    var menuImage: UIImage?
     var imagePicker = UIImagePickerController()
     let databaseManager = DatabaseManager()
     var imageIsValid: Bool {
         get {
-            return menuGroupImage != nil
+            return menuImage != nil
         }
     }
     var nameIsValid: Bool {
@@ -33,17 +35,17 @@ class AddMenuGroupViewController: UIViewController {
             return (menuNameTextField.text?.count ?? 0) > 0
         }
     }
-    var priceIsValid: Bool {
-        get {
-            return (priceTextField.text?.count ?? 0) > 0
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
         menuNameTextField.delegate = self
-        priceTextField.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let menuGroup = menuGroupToEdit, editMenuGroup == true {
+            fillInEditInfo(for: menuGroup)
+        }
     }
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
@@ -60,18 +62,34 @@ class AddMenuGroupViewController: UIViewController {
     
     @IBAction func addMenuButtonTapped(_ sender: Any) {
         if imageIsValid && nameIsValid {
-            let newMenuGroup = MenuGroup(
-                id: UUID().uuidString,
-                image: menuGroupImage!,
-                name: menuNameTextField.text!
-            )
             
-            delegate?.didAddNewMenuGroup(newMenuGroup)
-            databaseManager.saveNewMenuGroup(newMenuGroup)
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            //TODO: Throw error
+            if !editMenuGroup {
+                let newMenuGroup = MenuGroup(
+                    id: UUID().uuidString,
+                    image: menuImage!,
+                    name: menuNameTextField.text!
+                )
+                
+                delegate?.didAddNewMenuGroup(newMenuGroup)
+                databaseManager.saveNewMenuGroup(newMenuGroup)
+            } else {
+                menuGroupToEdit!.image = menuImage!
+                menuGroupToEdit!.name = menuNameTextField.text!
+                
+                delegate?.didUpdateMenuGroup(menuGroupToEdit!)
+                databaseManager.deleteMenuGroup(withId: menuGroupToEdit!.id)
+                databaseManager.saveNewMenuGroup(menuGroupToEdit!)
+                //databaseManager.updateMenuGroup(withId: menuGroupToEdit!.id, with: menuImage!, and: menuNameTextField.text!)
+            }
         }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func fillInEditInfo(for menuGroup: MenuGroup) {
+        menuImage = menuGroup.image
+        menuGroupImageView.image = menuImage
+        menuNameTextField.text = menuGroup.name
     }
 }
 
@@ -98,8 +116,8 @@ extension AddMenuGroupViewController: UINavigationControllerDelegate, UIImagePic
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        menuGroupImage = image
-        menuGroupImageView.image = menuGroupImage
+        menuImage = image
+        menuGroupImageView.image = menuImage
         imagePicker.dismiss(animated: true, completion: nil)
     }
 }

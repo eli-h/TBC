@@ -16,6 +16,7 @@ struct K {
     //MARK: - Segues
     static let menuGroupToMenuItems = "menuGroupToMenuItem"
     static let menuGroupToAddMenuGroup = "menuGroupToAddMenuGroup"
+    static let menuItemToAddMenuItem = "menuItemToAddMenuItem"
     
     //MARK: - Database
     static let menuGroupDataEntityName = "MenuGroupData"

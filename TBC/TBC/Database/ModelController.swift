@@ -20,6 +20,48 @@ struct DatabaseManager {
         print("Saved new menu group with Id: \(String(describing: newMenuGroupData.id))")
     }
     
+//    func updateMenuGroup(withId menuGroupId: String, with newImage: UIImage, and newName: String) {
+//        let dbPersistence = DatabasePersistence.sharedInstance
+//        let context = dbPersistence.persistentContainer.viewContext as NSManagedObjectContext
+//        
+//        let oldMenuGroupData = fetchMenuGroup(withId: menuGroupId)
+//        
+//        if let menuGroupToUpdate = oldMenuGroupData {
+//            
+//            ImageController.shared.deleteImage(imageName: menuGroupToUpdate.imageName!)
+//            
+//            let imageName = ImageController.shared.saveImage(image: newImage)
+//            
+//            menuGroupToUpdate.imageName = imageName
+//            menuGroupToUpdate.name = newName
+//
+//            save(context)
+//            print("Updated menu group name to: \(String(describing: menuGroupToUpdate.name))")
+//            print("Updated menu group image name to: \(String(describing: menuGroupToUpdate.imageName))")
+//        } else {
+//            print("Could not find menu group with Id: \(menuGroupId)")
+//        }
+//    }
+    
+    func deleteMenuGroup(withId menuGroupId: String) {
+        let dbPersistence = DatabasePersistence.sharedInstance
+        let context = dbPersistence.persistentContainer.viewContext as NSManagedObjectContext
+        
+        let menuGroup = fetchMenuGroup(withId: menuGroupId)
+        
+        if let menuGroupToDelete = menuGroup {
+            
+            ImageController.shared.deleteImage(imageName: menuGroupToDelete.imageName!)
+
+            context.delete(menuGroupToDelete)
+            save(context)
+            print("Deleted menu group with Id: \(menuGroupId)")
+        } else {
+            print("Could not find menu group with Id: \(menuGroupId)")
+
+        }
+    }
+    
     func createMenuGroupData(from newMenuGroup: MenuGroup, using context: NSManagedObjectContext) -> MenuGroupData {
         let menuGroupDataEntityDescription = NSEntityDescription.entity(forEntityName: K.menuGroupDataEntityName, in: context)
         let menuGroupData = MenuGroupData(entity: menuGroupDataEntityDescription!, insertInto: context)
@@ -31,6 +73,37 @@ struct DatabaseManager {
         menuGroupData.setValue(newMenuGroup.name, forKey: K.nameKey)
         
         return menuGroupData
+    }
+    
+    func saveNewMenuItem(_ newMenuItem: MenuItem, toMenuGroupWithId menuGroupId: String) {
+        let dbPersistence = DatabasePersistence.sharedInstance
+        let context = dbPersistence.persistentContainer.viewContext as NSManagedObjectContext
+        
+        let menuGroupData = fetchMenuGroup(withId: menuGroupId)
+        
+        if let menuGroupToAddMenuItemTo = menuGroupData {
+            
+            let newMenuItemData = createMenuItemData(from: newMenuItem, using: context)
+            menuGroupToAddMenuItemTo.addMenuItemData(newMenuItemData)
+            save(context)
+            print("Menu item with id: \(String(describing: newMenuItemData.id)) saved to site with Id: \(menuGroupId)")
+        } else {
+            print("Could not find menu group with id: \(menuGroupId)")
+        }
+    }
+    
+    func createMenuItemData(from newMenuItem: MenuItem, using context: NSManagedObjectContext) -> MenuItemData {
+        let menuItemDataEntityDescription = NSEntityDescription.entity(forEntityName: K.menuItemDataEntityName, in: context)
+        let menuItemData = MenuItemData(entity: menuItemDataEntityDescription!, insertInto: context)
+        
+        let imageName = ImageController.shared.saveImage(image: newMenuItem.image)
+        
+        menuItemData.setValue(newMenuItem.id, forKey: K.idKey)
+        menuItemData.setValue(imageName, forKey: K.imageNameKey)
+        menuItemData.setValue(newMenuItem.name, forKey: K.nameKey)
+        menuItemData.setValue(newMenuItem.price, forKey: K.priceKey)
+        
+        return menuItemData
     }
 
     func fetchAllMenuGroups() -> [MenuGroup]? {
@@ -53,6 +126,33 @@ struct DatabaseManager {
         }
         
         return menuGroups
+    }
+    
+    func fetchMenuGroup(withId menuGroupId: String) -> MenuGroupData? {
+        let dbPersistence = DatabasePersistence.sharedInstance
+        let context = dbPersistence.persistentContainer.viewContext as NSManagedObjectContext
+        
+        let entityDescription = NSEntityDescription.entity(forEntityName: K.menuGroupDataEntityName, in: context)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        let predicate = NSPredicate(format: "id == %@", menuGroupId)
+        fetchRequest.entity = entityDescription
+        fetchRequest.predicate = predicate
+        
+        var resultArray: [MenuGroupData] = []
+        
+        do {
+            let result = try context.fetch(fetchRequest) as? [MenuGroupData]
+            
+            if result!.count > 0 {
+                resultArray = result!
+            } else {
+                return nil
+            }
+        } catch let error as NSError {
+            print("Could not fetch menu group: \(error) - \(error.userInfo)")
+        }
+        
+        return resultArray[0]
     }
     
     func convertMenuGroupDataToMenuGroup(_ menuGroupData: MenuGroupData) -> MenuGroup {

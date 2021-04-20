@@ -13,11 +13,13 @@ class MenuGroupViewController: UIViewController {
     
     let databaseManager = DatabaseManager()
     var menuGroups: [MenuGroup] = []
+    var goToEdit = false
+    var menuGroupToEdit: MenuGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menuGroups = dummyMenuGroups()
+        //menuGroups = dummyMenuGroups()
         
         menuGroupTableView.delegate = self
         menuGroupTableView.dataSource = self
@@ -26,7 +28,7 @@ class MenuGroupViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //databaseManager.fetchAllMenuGroups() ?? []
+        menuGroups = databaseManager.fetchAllMenuGroups() ?? []
         reloadTableView()
     }
     
@@ -34,10 +36,16 @@ class MenuGroupViewController: UIViewController {
         if segue.identifier == K.menuGroupToAddMenuGroup {
             let vc = segue.destination as? AddMenuGroupViewController
             vc?.delegate = self
+            vc?.editMenuGroup = goToEdit
+            
+            if goToEdit, menuGroupToEdit != nil {
+                vc?.menuGroupToEdit = menuGroupToEdit
+            }
         }
     }
     
     @objc func addMenuGroup(sender: UIBarButtonItem) {
+        goToEdit = false
         performSegue(withIdentifier: K.menuGroupToAddMenuGroup, sender: self)
     }
     
@@ -76,21 +84,34 @@ extension MenuGroupViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            self.menuGroups.remove(at: indexPath.row)
+            
+            let menuGroupToDelete = self.menuGroups.remove(at: indexPath.row)
+            self.databaseManager.deleteMenuGroup(withId: menuGroupToDelete.id)
             self.reloadTableView()
         }
 
-        let share = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
-            // share item at indexPath
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            self.goToEdit = true
+            self.menuGroupToEdit = self.menuGroups[indexPath.row]
+            self.performSegue(withIdentifier: K.menuGroupToAddMenuGroup, sender: self)
         }
 
-        share.backgroundColor = UIColor.blue
+        edit.backgroundColor = UIColor.blue
 
-        return [delete, share]
+        return [delete, edit]
     }
 }
 
 extension MenuGroupViewController: AddMenuGroupViewControllerDelegate {
+    func didUpdateMenuGroup(_ updatedMenuGroup: MenuGroup) {
+        menuGroups.removeAll {
+            $0.id == updatedMenuGroup.id
+        }
+        
+        menuGroups.append(updatedMenuGroup)
+        reloadTableView()
+    }
+    
     func didAddNewMenuGroup(_ newMenuGroup: MenuGroup) {
         menuGroups.append(newMenuGroup)
         reloadTableView()
