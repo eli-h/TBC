@@ -16,22 +16,29 @@ class MenuGroupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        menuGroups = dummyMenuGroups()
+        
         menuGroupTableView.delegate = self
         menuGroupTableView.dataSource = self
-        let rightButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(showEditing(sender:)))
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMenuGroup(sender:)))
         navigationItem.rightBarButtonItem = rightButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        menuGroups = dummyMenuGroups()//databaseManager.fetchAllMenuGroups() ?? []
+        //databaseManager.fetchAllMenuGroups() ?? []
+        reloadTableView()
     }
     
-    @objc func showEditing(sender: UIBarButtonItem) {
-        if menuGroupTableView.isEditing {
-            menuGroupTableView.isEditing = false
-        } else {
-            menuGroupTableView.isEditing = true
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.menuGroupToAddMenuGroup {
+            let vc = segue.destination as? AddMenuGroupViewController
+            vc?.delegate = self
         }
+    }
+    
+    @objc func addMenuGroup(sender: UIBarButtonItem) {
+        performSegue(withIdentifier: K.menuGroupToAddMenuGroup, sender: self)
     }
     
     func dummyMenuGroups() -> [MenuGroup] {
@@ -47,6 +54,12 @@ class MenuGroupViewController: UIViewController {
         
         return dummyMenuGroups
     }
+    
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.menuGroupTableView.reloadData()
+        }
+    }
 }
 
 extension MenuGroupViewController: UITableViewDelegate, UITableViewDataSource {
@@ -59,5 +72,27 @@ extension MenuGroupViewController: UITableViewDelegate, UITableViewDataSource {
         let menuGroupCell = tableView.dequeueReusableCell(withIdentifier: K.menuGroupCell) as! MenuGroupTableViewCell
         menuGroupCell.setCell(image: menuGroup.image, name: menuGroup.name)
         return menuGroupCell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.menuGroups.remove(at: indexPath.row)
+            self.reloadTableView()
+        }
+
+        let share = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            // share item at indexPath
+        }
+
+        share.backgroundColor = UIColor.blue
+
+        return [delete, share]
+    }
+}
+
+extension MenuGroupViewController: AddMenuGroupViewControllerDelegate {
+    func didAddNewMenuGroup(_ newMenuGroup: MenuGroup) {
+        menuGroups.append(newMenuGroup)
+        reloadTableView()
     }
 }

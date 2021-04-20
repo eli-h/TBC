@@ -30,6 +30,7 @@
 		CD62CB16262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB14262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift */; };
 		CD62CB1F262CD7510043BD77 /* MenuItemData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB1D262CD7510043BD77 /* MenuItemData+CoreDataClass.swift */; };
 		CD62CB20262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB1E262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift */; };
+		CD62CB2B262E61900043BD77 /* AddMenuGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB2A262E61900043BD77 /* AddMenuGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		CD62CB14262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuGroupData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD62CB1D262CD7510043BD77 /* MenuItemData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CD62CB1E262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CD62CB2A262E61900043BD77 /* AddMenuGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuGroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				CD62CA78262C8C910043BD77 /* MenuGroupViewController.swift */,
 				CD62CAC4262C997D0043BD77 /* MenuItemViewController.swift */,
+				CD62CB2A262E61900043BD77 /* AddMenuGroupViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				CD62CAAE262C90780043BD77 /* Constants.swift in Sources */,
 				CD62CAEF262CCCF60043BD77 /* DatabasePersistence.swift in Sources */,
 				CD62CAC5262C997D0043BD77 /* MenuItemViewController.swift in Sources */,
+				CD62CB2B262E61900043BD77 /* AddMenuGroupViewController.swift in Sources */,
 				CD62CA79262C8C910043BD77 /* MenuGroupViewController.swift in Sources */,
 				CD62CB16262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift in Sources */,
 				CD62CA7F262C8C910043BD77 /* TBC.xcdatamodeld in Sources */,
