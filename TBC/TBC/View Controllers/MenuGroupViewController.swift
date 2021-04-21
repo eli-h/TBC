@@ -54,20 +54,6 @@ class MenuGroupViewController: UIViewController {
         performSegue(withIdentifier: K.menuGroupToAddMenuGroup, sender: self)
     }
     
-    func dummyMenuGroups() -> [MenuGroup] {
-        var dummyMenuGroups: [MenuGroup] = []
-        
-        let menuGroup1 = MenuGroup(id: "1", image: #imageLiteral(resourceName: "elijahMemoji"), name: "Pancakes", items: [])
-        let menuGroup2 = MenuGroup(id: "2", image: #imageLiteral(resourceName: "elijahMemoji"), name: "Burgers", items: [])
-        let menuGroup3 = MenuGroup(id: "3", image: #imageLiteral(resourceName: "elijahMemoji"), name: "Ice Cream", items: [])
-        
-        dummyMenuGroups.append(menuGroup1)
-        dummyMenuGroups.append(menuGroup2)
-        dummyMenuGroups.append(menuGroup3)
-        
-        return dummyMenuGroups
-    }
-    
     func reloadTableView() {
         DispatchQueue.main.async {
             self.menuGroupTableView.reloadData()
@@ -87,15 +73,15 @@ extension MenuGroupViewController: UITableViewDelegate, UITableViewDataSource {
         return menuGroupCell
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _)  in
             let menuGroupToDelete = self.menuGroups.remove(at: indexPath.row)
             self.databaseManager.deleteMenuGroup(withId: menuGroupToDelete.id)
             self.reloadTableView()
         }
 
-        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+        let edit = UIContextualAction(style: .normal, title: "Edit") { (_, _, _) in
             self.goToEdit = true
             self.menuGroupToEdit = self.menuGroups[indexPath.row]
             self.performSegue(withIdentifier: K.menuGroupToAddMenuGroup, sender: self)
@@ -103,9 +89,11 @@ extension MenuGroupViewController: UITableViewDelegate, UITableViewDataSource {
 
         edit.backgroundColor = UIColor.blue
 
-        return [delete, edit]
+        let swipeActions = UISwipeActionsConfiguration(actions: [delete, edit])
+        
+        return swipeActions
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMenuGroup = menuGroups[indexPath.row]
         performSegue(withIdentifier: K.menuGroupToMenuItems, sender: self)

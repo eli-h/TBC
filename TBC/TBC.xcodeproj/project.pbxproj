@@ -23,7 +23,7 @@
 		CD62CACB262C99D10043BD77 /* MenuGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CACA262C99D10043BD77 /* MenuGroupTableViewCell.swift */; };
 		CD62CAD3262C99E30043BD77 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAD2262C99E30043BD77 /* MenuItemTableViewCell.swift */; };
 		CD62CAD8262CA2A00043BD77 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAD7262CA2A00043BD77 /* ImageController.swift */; };
-		CD62CAE1262CA9A70043BD77 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAE0262CA9A70043BD77 /* ModelController.swift */; };
+		CD62CAE1262CA9A70043BD77 /* DatabseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAE0262CA9A70043BD77 /* DatabseManager.swift */; };
 		CD62CAEF262CCCF60043BD77 /* DatabasePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CAEE262CCCF60043BD77 /* DatabasePersistence.swift */; };
 		CD62CB15262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB13262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift */; };
 		CD62CB16262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB14262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift */; };
@@ -32,6 +32,7 @@
 		CD62CB2B262E61900043BD77 /* AddMenuGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB2A262E61900043BD77 /* AddMenuGroupViewController.swift */; };
 		CD62CB36262F01CF0043BD77 /* AddMenuItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB35262F01CF0043BD77 /* AddMenuItemViewController.swift */; };
 		CDD901E2262FB70B0093E1EB /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD901E1262FB70B0093E1EB /* ViewControllerExtension.swift */; };
+		CDD90206262FE5C00093E1EB /* ImageControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD90205262FE5C00093E1EB /* ImageControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +75,7 @@
 		CD62CACA262C99D10043BD77 /* MenuGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupTableViewCell.swift; sourceTree = "<group>"; };
 		CD62CAD2262C99E30043BD77 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		CD62CAD7262CA2A00043BD77 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
-		CD62CAE0262CA9A70043BD77 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		CD62CAE0262CA9A70043BD77 /* DatabseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabseManager.swift; sourceTree = "<group>"; };
 		CD62CAEE262CCCF60043BD77 /* DatabasePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePersistence.swift; sourceTree = "<group>"; };
 		CD62CB13262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuGroupData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CD62CB14262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuGroupData+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 		CD62CB2A262E61900043BD77 /* AddMenuGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuGroupViewController.swift; sourceTree = "<group>"; };
 		CD62CB35262F01CF0043BD77 /* AddMenuItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuItemViewController.swift; sourceTree = "<group>"; };
 		CDD901E1262FB70B0093E1EB /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		CDD90205262FE5C00093E1EB /* ImageControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				CD62CA8E262C8C920043BD77 /* TBCTests.swift */,
 				CD62CA90262C8C920043BD77 /* Info.plist */,
+				CDD90205262FE5C00093E1EB /* ImageControllerTests.swift */,
 			);
 			path = TBCTests;
 			sourceTree = "<group>";
@@ -213,7 +216,7 @@
 				CD62CB13262CD6AA0043BD77 /* MenuGroupData+CoreDataClass.swift */,
 				CD62CB14262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift */,
 				CD62CAEE262CCCF60043BD77 /* DatabasePersistence.swift */,
-				CD62CAE0262CA9A70043BD77 /* ModelController.swift */,
+				CD62CAE0262CA9A70043BD77 /* DatabseManager.swift */,
 				CD62CA7D262C8C910043BD77 /* TBC.xcdatamodeld */,
 			);
 			path = Database;
@@ -374,7 +377,7 @@
 				CD62CA75262C8C910043BD77 /* AppDelegate.swift in Sources */,
 				CD62CB36262F01CF0043BD77 /* AddMenuItemViewController.swift in Sources */,
 				CD62CAB8262C96A30043BD77 /* MenuGroup.swift in Sources */,
-				CD62CAE1262CA9A70043BD77 /* ModelController.swift in Sources */,
+				CD62CAE1262CA9A70043BD77 /* DatabseManager.swift in Sources */,
 				CD62CA77262C8C910043BD77 /* SceneDelegate.swift in Sources */,
 				CD62CAD3262C99E30043BD77 /* MenuItemTableViewCell.swift in Sources */,
 			);
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD62CA8F262C8C920043BD77 /* TBCTests.swift in Sources */,
+				CDD90206262FE5C00093E1EB /* ImageControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

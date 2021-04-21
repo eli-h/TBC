@@ -71,8 +71,8 @@ extension MenuItemViewController: UITableViewDelegate, UITableViewDataSource {
         return menuItemCell
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
             
             let menuItemToDelete = self.menuGroup.items.remove(at: indexPath.row)
             self.databaseManager.deleteMenuItem(withId: menuItemToDelete.id, fromMenuGroupWithId: self.menuGroup.id)
@@ -82,15 +82,17 @@ extension MenuItemViewController: UITableViewDelegate, UITableViewDataSource {
             self.reloadTableView()
         }
 
-        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+        let edit = UIContextualAction(style: .normal, title: "Edit") { (_, _, _) in
             self.goToEdit = true
             self.menuItemToEdit = self.menuGroup.items[indexPath.row]
             self.performSegue(withIdentifier: K.menuItemToAddMenuItem, sender: self)
         }
 
         edit.backgroundColor = UIColor.blue
-
-        return [delete, edit]
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [delete, edit])
+        
+        return swipeActions
     }
 }
 
