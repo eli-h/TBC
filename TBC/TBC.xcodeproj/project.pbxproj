@@ -31,6 +31,7 @@
 		CD62CB20262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB1E262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift */; };
 		CD62CB2B262E61900043BD77 /* AddMenuGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB2A262E61900043BD77 /* AddMenuGroupViewController.swift */; };
 		CD62CB36262F01CF0043BD77 /* AddMenuItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD62CB35262F01CF0043BD77 /* AddMenuItemViewController.swift */; };
+		CDD901E2262FB70B0093E1EB /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD901E1262FB70B0093E1EB /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		CD62CB1E262CD7510043BD77 /* MenuItemData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD62CB2A262E61900043BD77 /* AddMenuGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuGroupViewController.swift; sourceTree = "<group>"; };
 		CD62CB35262F01CF0043BD77 /* AddMenuItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuItemViewController.swift; sourceTree = "<group>"; };
+		CDD901E1262FB70B0093E1EB /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				CD62CA82262C8C920043BD77 /* LaunchScreen.storyboard */,
 				CD62CA85262C8C920043BD77 /* Info.plist */,
 				CD62CAAD262C90780043BD77 /* Constants.swift */,
+				CDD901E6262FB7110093E1EB /* Extension */,
 			);
 			path = TBC;
 			sourceTree = "<group>";
@@ -214,6 +217,14 @@
 				CD62CA7D262C8C910043BD77 /* TBC.xcdatamodeld */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		CDD901E6262FB7110093E1EB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CDD901E1262FB70B0093E1EB /* ViewControllerExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +365,7 @@
 				CD62CAEF262CCCF60043BD77 /* DatabasePersistence.swift in Sources */,
 				CD62CAC5262C997D0043BD77 /* MenuItemViewController.swift in Sources */,
 				CD62CB2B262E61900043BD77 /* AddMenuGroupViewController.swift in Sources */,
+				CDD901E2262FB70B0093E1EB /* ViewControllerExtension.swift in Sources */,
 				CD62CA79262C8C910043BD77 /* MenuGroupViewController.swift in Sources */,
 				CD62CB16262CD6AA0043BD77 /* MenuGroupData+CoreDataProperties.swift in Sources */,
 				CD62CA7F262C8C910043BD77 /* TBC.xcdatamodeld in Sources */,

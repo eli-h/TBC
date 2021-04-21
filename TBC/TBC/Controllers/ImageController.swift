@@ -14,8 +14,8 @@ class ImageController {
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     func saveImage(image: UIImage) -> String? {
-        let date = String(Date.timeIntervalSinceReferenceDate)
-        let imageName = date.replacingOccurrences(of: ".", with: "-") + ".png"
+
+        let imageName = UUID().uuidString + ".png"
         
         if let imageData = image.pngData() {
             do {
@@ -41,12 +41,23 @@ class ImageController {
             return nil
         }
         
-        if let imageData = UIImage(contentsOfFile: imagePath) {
-            return imageData
-        } else {
-            print("UIImage could not be created.")
+        let imageURL = URL(fileURLWithPath: imagePath)
+        
+        do {
+            let imageData = try Data(contentsOf: imageURL)
+            let image = UIImage(data: imageData)
+            return image
+        } catch let error as NSError {
+            print("Image could not be created: \(error)")
             return nil
         }
+
+//        if let imageData = UIImage(contentsOfFile: imagePath) {
+//            return imageData
+//        } else {
+//            print("UIImage could not be created.")
+//            return nil
+//        }
     }
     
     func deleteImage(imageName: String) {

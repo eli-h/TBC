@@ -21,9 +21,9 @@ class MenuItemTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setCell(image: UIImage, name: String, price: String) {
+    func setCell(image: UIImage, name: String, price: Float) {
         itemImageView.image = image
         itemNameLabel.text = name
-        itemPriceLabel.text = price
+        itemPriceLabel.text = String(price)
     }
 }

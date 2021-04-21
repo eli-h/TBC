@@ -40,6 +40,8 @@ class AddMenuGroupViewController: UIViewController {
         super.viewDidLoad()
         imagePicker.delegate = self
         menuNameTextField.delegate = self
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

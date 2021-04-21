@@ -22,6 +22,7 @@ class AddMenuItemViewController: UIViewController {
     
     var delegate: AddMenuItemViewControllerDelegate?
     var menuItemToEdit: MenuItem?
+    var parentMenuGroupId: String?
     var editMenuItem = false
     var itemImage: UIImage?
     var imagePicker = UIImagePickerController()
@@ -47,6 +48,14 @@ class AddMenuItemViewController: UIViewController {
         imagePicker.delegate = self
         itemNameTextField.delegate = self
         itemPriceTextField.delegate = self
+        
+        hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let menuItem = menuItemToEdit, editMenuItem == true {
+            fillInEditInfo(for: menuItem)
+        }
     }
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
@@ -64,13 +73,34 @@ class AddMenuItemViewController: UIViewController {
         if imageIsValid && nameIsValid && priceIsValid {
             
             if !editMenuItem {
-
+                let newMenuItem = MenuItem(
+                    id: UUID().uuidString,
+                    image: itemImage!,
+                    name: itemNameTextField.text!,
+                    price: Float(itemPriceTextField.text!)!
+                )
+                
+                delegate?.didAddNewMenuItem(newMenuItem)
+                databaseManager.saveNewMenuItem(newMenuItem, toMenuGroupWithId: parentMenuGroupId!)
             } else {
-
+                menuItemToEdit!.image = itemImage!
+                menuItemToEdit!.name = itemNameTextField.text!
+                menuItemToEdit!.price = Float(itemPriceTextField.text!)!
+                
+                delegate?.didUpdateMenuItem(menuItemToEdit!)
+                databaseManager.deleteMenuItem(withId: menuItemToEdit!.id, fromMenuGroupWithId: parentMenuGroupId!)
+                databaseManager.saveNewMenuItem(menuItemToEdit!, toMenuGroupWithId: parentMenuGroupId!)
             }
         }
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func fillInEditInfo(for menuItem: MenuItem) {
+        itemImage = menuItem.image
+        menuItemImageView.image = itemImage
+        itemNameTextField.text = menuItem.name
+        itemPriceTextField.text = String(menuItem.price)
     }
 }
 

@@ -13,6 +13,7 @@ class MenuGroupViewController: UIViewController {
     
     let databaseManager = DatabaseManager()
     var menuGroups: [MenuGroup] = []
+    var selectedMenuGroup: MenuGroup?
     var goToEdit = false
     var menuGroupToEdit: MenuGroup?
     
@@ -25,10 +26,11 @@ class MenuGroupViewController: UIViewController {
         menuGroupTableView.dataSource = self
         let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addMenuGroup(sender:)))
         navigationItem.rightBarButtonItem = rightButton
+        
+        menuGroups = databaseManager.fetchAllMenuGroups() ?? []
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        menuGroups = databaseManager.fetchAllMenuGroups() ?? []
         reloadTableView()
     }
     
@@ -41,6 +43,9 @@ class MenuGroupViewController: UIViewController {
             if goToEdit, menuGroupToEdit != nil {
                 vc?.menuGroupToEdit = menuGroupToEdit
             }
+        } else if segue.identifier == K.menuGroupToMenuItems {
+            let vc = segue.destination as? MenuItemViewController
+            vc?.menuGroup = selectedMenuGroup
         }
     }
     
@@ -100,6 +105,11 @@ extension MenuGroupViewController: UITableViewDelegate, UITableViewDataSource {
 
         return [delete, edit]
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMenuGroup = menuGroups[indexPath.row]
+        performSegue(withIdentifier: K.menuGroupToMenuItems, sender: self)
+    }
 }
 
 extension MenuGroupViewController: AddMenuGroupViewControllerDelegate {
@@ -113,6 +123,17 @@ extension MenuGroupViewController: AddMenuGroupViewControllerDelegate {
     }
     
     func didAddNewMenuGroup(_ newMenuGroup: MenuGroup) {
+        menuGroups.append(newMenuGroup)
+        reloadTableView()
+    }
+}
+
+extension MenuGroupViewController: MenuItemViewControllerDelegate {
+    func didUpdateMenuItem(_ newMenuGroup: MenuGroup) {
+        menuGroups.removeAll {
+            $0.id == newMenuGroup.id
+        }
+        
         menuGroups.append(newMenuGroup)
         reloadTableView()
     }
